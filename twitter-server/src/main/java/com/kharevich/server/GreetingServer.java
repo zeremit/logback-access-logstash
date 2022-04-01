@@ -13,16 +13,17 @@ import java.util.Collection;
 public class GreetingServer extends AbstractHttpServer {
 
 
-  @Override
-  public Collection<Module> javaModules() {
-    return ImmutableList.<Module>of(
-        new LogbackAccessModule());
-  }
+    @Override
+    public Collection<Module> javaModules() {
+        return ImmutableList.of(
+                new LogbackAccessModule());
+    }
 
-  @Override public void configureHttp(HttpRouter router) {
-    router
-        .filter(LogbackAccessFilter.class, true)
-        .filter(CommonFilters.class, true)
-        .add(GreetingController.class);
-  }
+    @Override
+    public void configureHttp(HttpRouter router) {
+        router
+                .filter(LogbackAccessFilter.class, true)
+                .filter(CommonFilters.class, true)
+                .add(GreetingController.class);
+    }
 }

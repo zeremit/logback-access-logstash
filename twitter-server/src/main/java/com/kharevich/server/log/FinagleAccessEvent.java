@@ -13,9 +13,9 @@ import java.util.Optional;
 
 public class FinagleAccessEvent extends BaseAccessEvent implements IAccessEvent {
 
-    private ServerAdapter serverAdapter;
+    private final ServerAdapter serverAdapter;
 
-    private Response response;
+    private final Response response;
 
     private Map<String, String> responseHeader;
 
@@ -42,7 +42,7 @@ public class FinagleAccessEvent extends BaseAccessEvent implements IAccessEvent 
 
     @Override
     public int getStatusCode() {
-        return response.getStatusCode();
+        return response.statusCode();
     }
 
     @Override

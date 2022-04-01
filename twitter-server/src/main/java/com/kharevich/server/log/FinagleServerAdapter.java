@@ -2,14 +2,14 @@ package com.kharevich.server.log;
 
 import ch.qos.logback.access.spi.ServerAdapter;
 import com.twitter.finagle.http.Response;
-import com.twitter.util.Duration;
 import com.twitter.util.Time;
+
 
 import java.util.Map;
 
 public class FinagleServerAdapter implements ServerAdapter {
 
-  private Response response;
+  private final Response response;
 
   public FinagleServerAdapter(Response response) {
     this.response = response;
@@ -25,7 +25,7 @@ public class FinagleServerAdapter implements ServerAdapter {
   }
 
   @Override public int getStatusCode() {
-    return this.response.getStatusCode();
+    return response.statusCode();
   }
 
   @Override public Map<String, String> buildResponseHeaderMap() {
